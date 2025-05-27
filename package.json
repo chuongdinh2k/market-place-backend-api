@@ -12,7 +12,10 @@
     "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
     "lint": "eslint . --ext .ts",
     "test": "jest -i --colors --verbose --detectOpenHandles",
-    "test:watch": "jest -i --watchAll"
+    "test:watch": "jest -i --watchAll",
+    "migration:create": "npx ts-node ./node_modules/.bin/sequelize-cli migration:generate --name",
+    "migration:migrate": "npx sequelize-cli db:migrate",
+    "migration:undo": "npx sequelize-cli db:migrate:undo"
   },
   "devDependencies": {
     "@eslint/js": "^9.27.0",
@@ -28,6 +31,7 @@
     "globals": "^16.2.0",
     "node-mocks-http": "^1.17.2",
     "nodemon": "^3.1.10",
+    "sequelize-typescript-migration": "^0.0.1-beta.3",
     "ts-jest": "^29.3.4",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3",
@@ -45,6 +49,7 @@
     "morgan": "^1.10.0",
     "mysql2": "^3.14.1",
     "sequelize": "^6.37.7",
+    "sequelize-cli": "^6.6.3",
     "uuid": "^11.1.0",
     "winston": "^3.17.0"
   }
