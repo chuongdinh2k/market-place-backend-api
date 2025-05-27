@@ -3,6 +3,7 @@ import httpStatus from "http-status";
 import { User, UserCreationAttributes } from "../models/user.model"; // adjust path as needed
 import { Op } from "sequelize";
 import ApiError from "../utils/apiError";
+import { v4 as uuidv4 } from "uuid";
 
 type QueryResult = any; // Replace with actual QueryResult type if available
 type UserType = User; // Use your User model
@@ -13,10 +14,13 @@ type UserType = User; // Use your User model
 const createUser = async (
   userBody: UserCreationAttributes
 ): Promise<UserType> => {
+  console.log("Creating user with body:", userBody);
   const existing = await User.findOne({ where: { email: userBody.email } });
   if (existing) {
     throw new ApiError(httpStatus.BAD_REQUEST, "Email already taken");
   }
+  const userIdGenerated = uuidv4();
+  userBody.idGenerated = userIdGenerated;
   return User.create(userBody);
 };
 

@@ -2,8 +2,7 @@ import app from "./app";
 import { logger } from "./config/logger";
 import { config } from "./config/config";
 import sequelize from "./config/sequalize";
-
-// import sequelize from './config/sequelize'; // assumes you have this file exporting a Sequelize instance
+import { initUserModel } from "./models/user.model";
 
 // eslint-disable-next-line prefer-const
 let server: ReturnType<typeof app.listen> | undefined;
@@ -20,6 +19,8 @@ sequelize
     logger.error("Unable to connect to the database:", err);
     process.exit(1);
   });
+
+initUserModel(sequelize);
 
 const exitHandler = () => {
   if (server) {

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Request, Response, NextFunction } from "express";
 import { BaseError as SequelizeBaseError } from "sequelize";
 import httpStatus from "http-status";
@@ -26,7 +28,12 @@ const errorConverter = (
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const errorHandler = (err: any, req: Request, res: Response) => {
+const errorHandler = (
+  err: any,
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   let { statusCode, message } = err;
   if (config.env === "production" && !err.isOperational) {
     statusCode = httpStatus.INTERNAL_SERVER_ERROR;
