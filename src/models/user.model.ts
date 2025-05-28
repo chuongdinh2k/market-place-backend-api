@@ -80,7 +80,7 @@ export function initUserModel(sequelize: Sequelize): typeof User {
     },
     {
       sequelize,
-      tableName: "User",
+      tableName: "users",
       modelName: "User",
       timestamps: true,
       underscored: true, // Ensures all fields use snake_case in DB

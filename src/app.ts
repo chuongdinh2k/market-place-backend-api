@@ -2,6 +2,8 @@ import httpStatus from "http-status";
 import express from "express";
 import compression from "compression";
 import cors from "cors";
+import swaggerUi from 'swagger-ui-express';
+import { swaggerSpec } from './config/swagger';
 import { config } from "./config/config";
 import * as morgan from "./config/morgan";
 import routes from "./routes/v1";
@@ -34,6 +36,10 @@ app.use(compression());
 // enable cors
 app.use(cors());
 app.options("*", cors());
+
+// Swagger UI setup
+app.use('/v1/docs', swaggerUi.serve);
+app.get('/v1/docs', swaggerUi.setup(swaggerSpec, { explorer: true }));
 
 // jwt authentication
 // app.use(passport.initialize());
