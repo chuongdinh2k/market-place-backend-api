@@ -26,14 +26,10 @@ const router = express.Router();
  *             type: object
  *             required:
  *               - name
- *               - slug
  *             properties:
  *               name:
  *                 type: string
  *                 description: Category name
- *               slug:
- *                 type: string
- *                 description: Category slug (URL-friendly identifier)
  *               description:
  *                 type: string
  *                 description: Category description
@@ -134,7 +130,7 @@ router.post(
  */
 router.get(
   "/",
-  validate(categoryValidation.queryCategory),
+  validate(categoryValidation.queryCategories),
   categoryController.getCategories
 );
 

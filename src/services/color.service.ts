@@ -7,9 +7,9 @@ type QueryResult = any;
 type ColorType = Color;
 
 /**
- * Create Size
+ * Create Color
  */
-const createSize = async (
+const createColor = async (
   colorBody: ColorCreationAttributes
 ): Promise<ColorType> => {
   const { name } = colorBody;
@@ -49,4 +49,4 @@ const queryColors = async (query: any): Promise<QueryResult> => {
   return { results, total };
 };
 
-export { createSize, queryColors };
+export { createColor, queryColors };

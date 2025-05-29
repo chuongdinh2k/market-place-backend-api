@@ -6,6 +6,7 @@ import { initUserModel } from "./models/user.model";
 import { initCategoryModel } from "./models/category.model";
 import { initSizeModel } from "./models/size.model";
 import { initColorModel } from "./models/color.model";
+import { initStoreModel } from "./models/store.model";
 
 // eslint-disable-next-line prefer-const
 let server: ReturnType<typeof app.listen> | undefined;
@@ -27,6 +28,8 @@ initUserModel(sequelize);
 initCategoryModel(sequelize);
 initSizeModel(sequelize);
 initColorModel(sequelize);
+initSizeModel(sequelize);
+initStoreModel(sequelize);
 
 const exitHandler = () => {
   if (server) {

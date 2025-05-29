@@ -1,4 +1,5 @@
 import Joi from "joi";
+import pagination from "./pagination.validation";
 
 const createColor = {
   body: Joi.object().keys({
@@ -10,11 +11,6 @@ const createColor = {
   }),
 };
 
-const queryColors = {
-  query: Joi.object().keys({
-    page: Joi.number().integer().min(1).default(1),
-    limit: Joi.number().integer().min(1).max(100).default(10),
-  }),
-};
+const queryColors = { ...pagination.paginationQuery };
 
 export default { createColor, queryColors };

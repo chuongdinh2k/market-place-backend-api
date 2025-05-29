@@ -3,3 +3,4 @@ export { default as userValidation } from "./user.validation";
 export { default as categoryValidation } from "./category.validation";
 export { default as sizeValidation } from "./size.validation";
 export { default as colorValidation } from "./color.validation";
+export { default as storeValidation } from "./store.validation";

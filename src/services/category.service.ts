@@ -2,6 +2,7 @@
 import httpStatus from "http-status";
 import ApiError from "../utils/apiError";
 import { Category, CategoryCreationAttributes } from "../models/category.model";
+import { generateSlug } from "../utils/slug";
 
 type QueryResult = any;
 type CategoryType = Category;
@@ -17,6 +18,8 @@ const createCategory = async (
   if (existing) {
     throw new ApiError(httpStatus.BAD_REQUEST, "Category already exists");
   }
+  const slug = generateSlug(categoryBody.name);
+  categoryBody.slug = slug;
   return Category.create(categoryBody);
 };
 

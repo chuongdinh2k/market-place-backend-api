@@ -4,7 +4,7 @@ import catchAsync from "../utils/catchAsync";
 import { colorService } from "../services";
 
 const createColor = catchAsync(async (req: Request, res: Response) => {
-  const color = await colorService.createSize(req.body);
+  const color = await colorService.createColor(req.body);
   res.status(httpStatus.CREATED).send({ color });
 });
 

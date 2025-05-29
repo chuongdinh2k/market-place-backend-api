@@ -1,7 +1,3 @@
-// const authRoute = require('./auth.route');
-// const userRoute = require('./user.route');
-// const docsRoute = require('./docs.route');
-// const config = require('../../config/config');
 import express from "express";
 import { config } from "../../config/config";
 import authRoute from "./auth.route";
@@ -9,6 +5,7 @@ import userRoute from "./user.route";
 import categoryRoute from "./category.route";
 import sizeRoute from "./size.route";
 import colorRoute from "./color.route";
+import storeRoute from "./store.route";
 
 const router = express.Router();
 
@@ -32,6 +29,10 @@ const defaultRoutes = [
   {
     path: "/colors",
     route: colorRoute,
+  },
+  {
+    path: "/stores",
+    route: storeRoute,
   },
 ];
 
