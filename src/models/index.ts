@@ -3,3 +3,5 @@ export * as categoryModel from "./category.model";
 export * as sizeModel from "./size.model";
 export * as colorModel from "./color.model";
 export * as storeModel from "./store.model";
+export * as productModel from "./product.model";
+export * as inventoryModel from "./inventory.model";

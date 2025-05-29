@@ -6,6 +6,8 @@ import categoryRoute from "./category.route";
 import sizeRoute from "./size.route";
 import colorRoute from "./color.route";
 import storeRoute from "./store.route";
+import productRoute from "./product.route";
+import inventoryRoute from "./inventory.route";
 
 const router = express.Router();
 
@@ -33,6 +35,14 @@ const defaultRoutes = [
   {
     path: "/stores",
     route: storeRoute,
+  },
+  {
+    path: "/products",
+    route: productRoute,
+  },
+  {
+    path: "/inventory",
+    route: inventoryRoute,
   },
 ];
 
