@@ -6,6 +6,9 @@ import express from "express";
 import { config } from "../../config/config";
 import authRoute from "./auth.route";
 import userRoute from "./user.route";
+import categoryRoute from "./category.route";
+import sizeRoute from "./size.route";
+import colorRoute from "./color.route";
 
 const router = express.Router();
 
@@ -17,6 +20,18 @@ const defaultRoutes = [
   {
     path: "/users",
     route: userRoute,
+  },
+  {
+    path: "/categories",
+    route: categoryRoute,
+  },
+  {
+    path: "/sizes",
+    route: sizeRoute,
+  },
+  {
+    path: "/colors",
+    route: colorRoute,
   },
 ];
 

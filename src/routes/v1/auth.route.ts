@@ -29,7 +29,7 @@ const router = express.Router();
  *               - email
  *               - password
  *               - firstName
- *               - lastName 
+ *               - lastName
  *             properties:
  *               email:
  *                 type: string
@@ -93,6 +93,7 @@ const router = express.Router();
  *       "409":
  *         description: Email already exists
  */
+
 router.post(
   "/register",
   validate(authValidation.register),

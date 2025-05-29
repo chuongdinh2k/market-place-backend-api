@@ -49,7 +49,7 @@ const errorHandler = (
   };
 
   if (config.env === "development") {
-    logger.error(err);
+    // logger.error(err);
   }
 
   res.status(statusCode).send(response);

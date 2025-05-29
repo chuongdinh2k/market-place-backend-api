@@ -3,6 +3,9 @@ import { logger } from "./config/logger";
 import { config } from "./config/config";
 import sequelize from "./config/sequalize";
 import { initUserModel } from "./models/user.model";
+import { initCategoryModel } from "./models/category.model";
+import { initSizeModel } from "./models/size.model";
+import { initColorModel } from "./models/color.model";
 
 // eslint-disable-next-line prefer-const
 let server: ReturnType<typeof app.listen> | undefined;
@@ -21,6 +24,9 @@ sequelize
   });
 
 initUserModel(sequelize);
+initCategoryModel(sequelize);
+initSizeModel(sequelize);
+initColorModel(sequelize);
 
 const exitHandler = () => {
   if (server) {

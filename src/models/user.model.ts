@@ -83,8 +83,8 @@ export function initUserModel(sequelize: Sequelize): typeof User {
       tableName: "users",
       modelName: "User",
       timestamps: true,
-      underscored: true, // Ensures all fields use snake_case in DB
-      paranoid: true, // Enables soft deletes using deletedAt
+      underscored: true,
+      paranoid: true,
     }
   );
   return User;
