@@ -1,48 +1,51 @@
-/* eslint-disable no-undef */
 /* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-undef */
 "use strict";
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("users", {
+    await queryInterface.createTable("products", {
       id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         primaryKey: true,
         allowNull: false,
       },
-      id_gen: {
-        type: Sequelize.STRING(50),
+      name: {
+        type: Sequelize.STRING(150),
+        allowNull: false,
+      },
+      slug: {
+        type: Sequelize.STRING(150),
         unique: true,
         allowNull: false,
       },
-      email: {
-        type: Sequelize.STRING(100),
-        unique: true,
+      description: {
+        type: Sequelize.TEXT,
+        allowNull: true,
+      },
+      price: {
+        type: Sequelize.DECIMAL(10, 2),
         allowNull: false,
       },
-      role: {
-        type: Sequelize.TINYINT,
-        defaultValue: 1,
-        allowNull: false,
-        comment: "0 = admin, 1 = client",
-      },
-      first_name: {
-        type: Sequelize.STRING(50),
-        allowNull: false,
-      },
-      last_name: {
-        type: Sequelize.STRING(50),
-        allowNull: false,
-      },
-      avatar: {
+      thumbnail: {
         type: Sequelize.STRING(255),
         allowNull: true,
       },
-      password: {
-        type: Sequelize.STRING(50),
+      image: {
+        type: Sequelize.TEXT,
+        allowNull: true,
+      },
+      category_id: {
+        type: Sequelize.INTEGER,
         allowNull: false,
+        references: {
+          model: "categories",
+          key: "id",
+        },
+        onUpdate: "CASCADE",
+        onDelete: "RESTRICT", // Prevent deletion if products exist in the category
       },
       deleted_at: {
         type: Sequelize.DATE,
@@ -62,6 +65,8 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("users");
+    // Drop inventories table first to avoid foreign key constraint error
+    await queryInterface.dropTable("inventories");
+    await queryInterface.dropTable("products");
   },
 };

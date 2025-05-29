@@ -1,52 +1,55 @@
-/* eslint-disable no-undef */
 /* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-undef */
 "use strict";
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("users", {
+    await queryInterface.createTable("user_addresses", {
       id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         primaryKey: true,
         allowNull: false,
       },
-      id_gen: {
-        type: Sequelize.STRING(50),
-        unique: true,
+      user_id: {
+        type: Sequelize.INTEGER,
         allowNull: false,
+        references: {
+          model: "users",
+          key: "id",
+        },
+        onUpdate: "CASCADE",
+        onDelete: "RESTRICT",
       },
-      email: {
-        type: Sequelize.STRING(100),
-        unique: true,
-        allowNull: false,
-      },
-      role: {
-        type: Sequelize.TINYINT,
-        defaultValue: 1,
-        allowNull: false,
-        comment: "0 = admin, 1 = client",
-      },
-      first_name: {
-        type: Sequelize.STRING(50),
-        allowNull: false,
-      },
-      last_name: {
-        type: Sequelize.STRING(50),
-        allowNull: false,
-      },
-      avatar: {
+      address: {
         type: Sequelize.STRING(255),
-        allowNull: true,
-      },
-      password: {
-        type: Sequelize.STRING(50),
         allowNull: false,
       },
-      deleted_at: {
-        type: Sequelize.DATE,
+      city: {
+        type: Sequelize.STRING(100),
+        allowNull: false,
+      },
+      state: {
+        type: Sequelize.STRING(100),
+        allowNull: false,
+      },
+      postal_code: {
+        type: Sequelize.STRING(20),
+        allowNull: false,
+      },
+      country: {
+        type: Sequelize.STRING(100),
+        allowNull: false,
+      },
+      phone_number: {
+        type: Sequelize.STRING(20),
         allowNull: true,
+      },
+      is_default: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
       },
       updated_at: {
         type: Sequelize.DATE,
@@ -62,6 +65,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("users");
+    await queryInterface.dropTable("user_addresses");
   },
 };
